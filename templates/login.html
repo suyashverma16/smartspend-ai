@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login — SmartSpend AI</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        font-family: "DM Sans", sans-serif;
+        background: #0d0f14;
+        color: #e8eaf0;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 24px;
+      }
+      .card {
+        background: #13161e;
+        border: 1px solid rgba(255, 255, 255, 0.07);
+        border-radius: 20px;
+        padding: 40px;
+        width: 100%;
+        max-width: 420px;
+      }
+      h1 {
+        font-family: "DM Serif Display", serif;
+        font-size: 2rem;
+        font-style: italic;
+        color: #f0c060;
+        margin-bottom: 4px;
+      }
+      .subtitle {
+        color: #7a7f94;
+        font-size: 14px;
+        margin-bottom: 32px;
+      }
+      .form-group {
+        margin-bottom: 18px;
+      }
+      label {
+        display: block;
+        font-size: 11px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: #7a7f94;
+        margin-bottom: 8px;
+      }
+      input {
+        width: 100%;
+        background: #1a1e29;
+        border: 1px solid rgba(255, 255, 255, 0.07);
+        border-radius: 12px;
+        padding: 12px 14px;
+        color: #e8eaf0;
+        font-family: "DM Sans", sans-serif;
+        font-size: 14px;
+        outline: none;
+        transition: border-color 0.2s;
+      }
+      input:focus {
+        border-color: #f0c060;
+        box-shadow: 0 0 0 3px rgba(240, 192, 96, 0.1);
+      }
+      .btn {
+        width: 100%;
+        padding: 14px;
+        background: #f0c060;
+        border: none;
+        border-radius: 12px;
+        color: #0d0f14;
+        font-size: 15px;
+        font-weight: 600;
+        cursor: pointer;
+        margin-top: 8px;
+        transition: opacity 0.2s;
+      }
+      .btn:hover {
+        opacity: 0.9;
+      }
+      .error {
+        background: rgba(255, 107, 122, 0.1);
+        border: 1px solid rgba(255, 107, 122, 0.3);
+        border-radius: 10px;
+        padding: 10px 14px;
+        font-size: 13px;
+        color: #ff6b7a;
+        margin-bottom: 20px;
+      }
+      .footer {
+        text-align: center;
+        margin-top: 24px;
+        font-size: 13px;
+        color: #7a7f94;
+      }
+      .footer a {
+        color: #f0c060;
+        text-decoration: none;
+        font-weight: 500;
+      }
+      .footer a:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <h1>SmartSpend AI</h1>
+      <p class="subtitle">Sign in to track your expenses</p>
+
+      {% if error %}
+      <div class="error">⚠ {{ error }}</div>
+      {% endif %}
+
+      <form method="POST" action="/login">
+        <div class="form-group">
+          <label>Email</label>
+          <input
+            type="email"
+            name="email"
+            placeholder="you@example.com"
+            required
+            autofocus
+          />
+        </div>
+        <div class="form-group">
+          <label>Password</label>
+          <input
+            type="password"
+            name="password"
+            placeholder="••••••••"
+            required
+          />
+        </div>
+        <button class="btn" type="submit">Sign In</button>
+      </form>
+
+      <div class="footer">
+        Don't have an account? <a href="/register">Register</a>
+      </div>
+    </div>
+  </body>
+</html>
